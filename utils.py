@@ -1,23 +1,8 @@
-"""
-A series of helper functions used throughout the course.
-
-If a function gets defined once and could be used over and over, it'll go in here.
-"""
 import torch
 import matplotlib.pyplot as plt
 import numpy as np
-
-from torch import nn
-
-import os
-import zipfile
-
-from pathlib import Path
 import pickle
-import requests
-# Walk through an image classification directory and find out how many files (images)
-# are in each subdirectory.
-import os
+
 
 def save_ckpt(model, optimizer, PATH, params={}):
     """
@@ -48,17 +33,6 @@ def load_ckpt(model,optimizer,PATH):
     print(f'Loaded model (ckpt) from: {PATH}')
     return checkpoint
 
-
-
-
-
-
-
-
-
-
-
-
 def count_and_print_least_common_classes(arr,idx2class):
     # Calculate counts of each class
     unique_classes, counts = np.unique(arr, return_counts=True)
@@ -77,8 +51,6 @@ def count_and_print_least_common_classes(arr,idx2class):
         i+=1
     return least_common_classes, least_counts
 
-
-
 def wrong_class(y_pred, labels, samples):
     wrong_predictions = []
     predicted_indices = torch.argmax(y_pred, dim=1)
@@ -95,11 +67,6 @@ def save_obj(obj, name ):
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
     print(f"Saved {name} to disk")
 
-
-
-
-
-# Plot loss curves of a model
 def plot_loss_curves(loss_res, metrics_res):
     """Plots training curves of loss and metrics dictionaries.
     """
@@ -128,9 +95,6 @@ def plot_loss_curves(loss_res, metrics_res):
     plt.title("Accuracy")
     plt.xlabel("Epochs")
     plt.legend()
-
-
-
 
 def set_seeds(seed=42):
     """Sets random sets for torch operations.
